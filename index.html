@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Kinjal! 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div class="loading-screen" id="loading-screen">
+  <div class="loading-content">
+    <div class="loading-cake">
+      <svg viewBox="0 0 120 100" width="120" height="100" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="60" cy="90" rx="48" ry="8" fill="rgba(255,255,255,0.3)"/>
+        <rect x="20" y="55" width="80" height="30" rx="8" fill="#FFB6D9"/>
+        <rect x="20" y="55" width="80" height="8" rx="4" fill="rgba(255,255,255,0.5)"/>
+        <rect x="32" y="35" width="56" height="24" rx="6" fill="#C77DFF"/>
+        <rect x="32" y="35" width="56" height="6" rx="3" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="44" cy="38" r="3" fill="#FFD700"/>
+        <circle cx="60" cy="37" r="3" fill="#FF6B9D"/>
+        <circle cx="76" cy="38" r="3" fill="#FFD700"/>
+        <rect x="56" y="20" width="3" height="16" fill="#FF6B9D"/>
+        <path class="loading-flame" d="M57.5 8 C 60 13, 60 17, 57.5 20 C 55 17, 55 13, 57.5 8 Z" fill="#FFD700"/>
+        <circle class="loading-flame-glow" cx="57.5" cy="12" r="6" fill="rgba(255,215,0,0.3)"/>
+      </svg>
+    </div>
+    <div class="loading-name">Kinjal</div>
+    <div class="loading-sub">Getting your birthday surprise ready...</div>
+    <div class="loading-dots">
+      <span class="dot dot1"></span>
+      <span class="dot dot2"></span>
+      <span class="dot dot3"></span>
+    </div>
+  </div>
+</div>
+
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<div class="balloon-field" aria-hidden="true">
+  <div class="balloon b1"></div>
+  <div class="balloon b2"></div>
+  <div class="balloon b3"></div>
+  <div class="balloon b4"></div>
+  <div class="balloon b5"></div>
+</div>
+
+<div class="sparkle-field" aria-hidden="true">
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+<canvas id="fireworks-canvas"></canvas>
+
+<button id="music-toggle" aria-pressed="false" aria-label="Toggle birthday music">
+  <span class="note-on">🎵</span><span class="note-off">🔇</span>
+</button>
+
+<!-- ============ HERO ============ -->
+<section class="hero parallax-section">
+  <div class="hero-stars" aria-hidden="true">
+    <div class="hero-star">✨</div>
+    <div class="hero-star">⭐</div>
+    <div class="hero-star">💫</div>
+    <div class="hero-star">✨</div>
+    <div class="hero-star">🌟</div>
+    <div class="hero-star">⭐</div>
+  </div>
+  <span class="eyebrow reveal-child">August 19</span>
+  <h1 class="reveal-child delay-1">Happy Birthday,<br>Kinjal!</h1>
+  <h1 class="kinjuuu reveal-child delay-2">Kinjuuuuu jiiii</h1>
+  <p class="sub reveal-child delay-3">One more trip around the sun for the person who makes everything a little brighter. Today's all yours 🎉</p>
+
+  <div class="cake-wrap reveal-scale delay-4" id="cake" role="button" tabindex="0" aria-label="Click the candles to make a wish">
+    <svg viewBox="0 0 300 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="150" cy="200" rx="110" ry="14" fill="#F3E6EF"/>
+      <rect x="60" y="120" width="180" height="70" rx="14" fill="#FFD4B8"/>
+      <rect x="60" y="120" width="180" height="16" rx="8" fill="#FFFDFB"/>
+      <rect x="80" y="80" width="140" height="55" rx="12" fill="#E8D5F5"/>
+      <rect x="80" y="80" width="140" height="14" rx="7" fill="#FFFDFB"/>
+      <circle cx="100" cy="85" r="6" fill="#FF8FAB"/>
+      <circle cx="150" cy="82" r="6" fill="#FFD166"/>
+      <circle cx="200" cy="85" r="6" fill="#7EDEAA"/>
+      <g>
+        <rect x="108" y="52" width="7" height="30" fill="#FF8FAB"/>
+        <path class="flame f1" d="M111.5 30 C 116 38, 116 46, 111.5 52 C 107 46, 107 38, 111.5 30 Z" fill="#FFD166"/>
+        <circle class="smoke s1" cx="111.5" cy="30" r="6" fill="#C9BFC9"/>
+      </g>
+      <g>
+        <rect x="146.5" y="46" width="7" height="36" fill="#7EDEAA"/>
+        <path class="flame f2" d="M150 24 C 154.5 32, 154.5 40, 150 46 C 145.5 40, 145.5 32, 150 24 Z" fill="#FFD166"/>
+        <circle class="smoke s2" cx="150" cy="24" r="6" fill="#C9BFC9"/>
+      </g>
+      <g>
+        <rect x="185" y="52" width="7" height="30" fill="#C9A0ED"/>
+        <path class="flame f3" d="M188.5 30 C 193 38, 193 46, 188.5 52 C 184 46, 184 38, 188.5 30 Z" fill="#FFD166"/>
+        <circle class="smoke s3" cx="188.5" cy="30" r="6" fill="#C9BFC9"/>
+      </g>
+    </svg>
+  </div>
+  <div class="cake-hint" id="cake-hint">🕯️ tap the candles to make a wish</div>
+  <div class="section-cta hidden" id="cta-hero">
+    <button class="cta-btn" onclick="revealSection('age-section')">
+      <span class="cta-icon">✨</span>
+      <span class="cta-text">See the numbers behind you</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="age-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(255,224,233,0.3)" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,35 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ FIREWORKS ============ -->
+<div id="fireworks-overlay" class="fireworks-overlay hidden"></div>
+
+<!-- ============ AGE CALCULATOR ============ -->
+<section class="parallax-section section-hidden" id="age-section" data-reveal="age-section">
+  <h2 class="section-title reveal-child">20 Years of Kinjal ✨</h2>
+  <p class="section-sub reveal-child delay-1">Every heartbeat, every laugh — all these beautiful numbers</p>
+  <div class="age-grid">
+    <div class="age-card reveal-scale">
+      <div class="age-num" id="age-years">--</div>
+      <div class="age-label">Years Old</div>
+    </div>
+    <div class="age-card reveal-scale delay-1">
+      <div class="age-num" id="age-days">--</div>
+      <div class="age-label">Days Alive</div>
+    </div>
+    <div class="age-card reveal-scale delay-2">
+      <div class="age-num" id="age-hours">--</div>
+      <div class="age-label">Hours Lived</div>
+    </div>
+    <div class="age-card reveal-scale delay-3">
+      <div class="age-num" id="age-mins">--</div>
+      <div class="age-label">Minutes of Joy</div>
+    </div>
+    <div class="age-card reveal-scale delay-4">
+      <div class="age-num" id="age-hearts">--</div>
+      <div class="age-label">Heartbeats (approx)</div>
+    </div>
+    <div class="age-card reveal-scale delay-5">
+      <div class="age-num" id="age-smiles">--</div>
+      <div class="age-label">Smiles Given</div>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('countdown-section')">
+      <span class="cta-icon">⏰</span>
+      <span class="cta-text">Countdown to the big day</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="countdown-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(222,208,245,0.3)" d="M0,30 C360,0 720,60 1080,30 C1260,15 1380,25 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ COUNTDOWN ============ -->
+<section id="countdown-section" class="parallax-section section-hidden" data-reveal="countdown-section">
+  <h2 class="countdown-title reveal-child">Counting down to the big day</h2>
+  <p class="countdown-sub reveal-child delay-1">Every second gets us closer to celebrating you 🎈</p>
+  <div class="countdown reveal-scale delay-2" id="countdown">
+    <div class="count-card"><div class="num" id="cd-days">--</div><div class="label">Days</div></div>
+    <div class="count-card"><div class="num" id="cd-hours">--</div><div class="label">Hours</div></div>
+    <div class="count-card"><div class="num" id="cd-mins">--</div><div class="label">Minutes</div></div>
+    <div class="count-card"><div class="num" id="cd-secs">--</div><div class="label">Seconds</div></div>
+  </div>
+  <p class="arrived" id="arrived-msg">🎂 It's here — happy birthday, Kinjal! 🎂</p>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('letter-section')">
+      <span class="cta-icon">💌</span>
+      <span class="cta-text">Read your special letter</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="letter-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(195,235,222,0.3)" d="M0,30 C240,55 480,5 720,30 C960,55 1200,5 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ LETTER REVEAL ============ -->
+<section class="parallax-section section-hidden" id="letter-section" data-reveal="letter-section">
+  <h2 class="section-title reveal-child">A Letter For You 💌</h2>
+  <p class="section-sub reveal-child delay-1">Click to tear open the envelope</p>
+  <div class="envelope-wrap reveal-scale delay-2" id="envelope">
+    <div class="envelope">
+      <div class="envelope-flap"></div>
+      <div class="envelope-body">
+        <div class="envelope-heart">❤</div>
+      </div>
+    </div>
+    <div class="letter-content" id="letter-content">
+      <div class="letter-paper">
+        <p class="letter-handwriting">Dear Kinjal,</p>
+        <p class="letter-handwriting">On this special day, I want you to know how much you mean to everyone around you. Your smile lights up rooms, your kindness touches hearts, and your spirit inspires us all.</p>
+        <p class="letter-handwriting">May this year bring you endless joy, exciting adventures, and all the love your heart can hold.</p>
+        <p class="letter-handwriting">Happy Birthday, beautiful soul! 🌸</p>
+        <p class="letter-signoff">With all my love 💕</p>
+      </div>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('timeline-section')">
+      <span class="cta-icon">🛤️</span>
+      <span class="cta-text">Walk down memory lane</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="timeline-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(245,197,99,0.2)" d="M0,30 C360,5 720,55 1080,30 C1260,18 1380,38 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ TIMELINE / MEMORY LANE ============ -->
+<section class="parallax-section section-hidden" id="timeline-section" data-reveal="timeline-section">
+  <h2 class="section-title reveal-child">Our Memory Lane 🛤️</h2>
+  <p class="section-sub reveal-child delay-1">A journey through the moments that matter</p>
+  <div class="timeline">
+    <div class="timeline-item left reveal-left">
+      <div class="timeline-content">
+        <div class="timeline-icon">🎈</div>
+        <h3>The Day You Were Born</h3>
+        <p>The world became a brighter place the moment Kinjal arrived. A star was born!</p>
+      </div>
+    </div>
+    <div class="timeline-item right reveal-right">
+      <div class="timeline-content">
+        <div class="timeline-icon">🎂</div>
+        <h3>First Birthday</h3>
+        <p>Cake everywhere, smiles all around. The beginning of many beautiful celebrations!</p>
+      </div>
+    </div>
+    <div class="timeline-item left reveal-left">
+      <div class="timeline-content">
+        <div class="timeline-icon">📚</div>
+        <h3>Growing Up</h3>
+        <p>Every adventure, every lesson, every laugh shaped the amazing person you are today.</p>
+      </div>
+    </div>
+    <div class="timeline-item right reveal-right">
+      <div class="timeline-content">
+        <div class="timeline-icon">✨</div>
+        <h3>Today</h3>
+        <p>Another year of being wonderful. Here's to making this the best one yet!</p>
+      </div>
+    </div>
+    <div class="timeline-item left reveal-left">
+      <div class="timeline-content">
+        <div class="timeline-icon">🌟</div>
+        <h3>The Future</h3>
+        <p>So many amazing moments await. The best is yet to come!</p>
+      </div>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('message-section')">
+      <span class="cta-icon">🎁</span>
+      <span class="cta-text">Here's a message for you</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="message-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(255,224,233,0.3)" d="M0,30 C480,55 960,5 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ MESSAGE ============ -->
+<section class="parallax-section section-hidden" id="message-section" data-reveal="message-section">
+  <div class="message-card reveal-scale">
+    <h2>For Kinjal 💌</h2>
+    <p>
+      Happy birthday! Today is a celebration of everything that makes you, you — your kindness,
+      your laugh, and the way you make the people around you feel seen. I hope this year brings
+      you more of what makes you happiest, a little more ease, and plenty of moments worth
+      celebrating just like this one.
+    </p>
+    <p>
+      Wherever you are on August 19th, I hope you feel as loved as you make everyone around
+      you feel. Here's to you, Kinjal — enjoy every bit of your day.
+    </p>
+    <p class="signoff">With love, always 🎁</p>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('quiz-section')">
+      <span class="cta-icon">🤔</span>
+      <span class="cta-text">Test your knowledge about Kinjal</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="quiz-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(175,132,230,0.2)" d="M0,30 C360,50 720,10 1080,30 C1260,40 1380,20 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<section class="parallax-section section-hidden" id="quiz-section" data-reveal="quiz-section">
+  <h2 class="section-title reveal-child">How Well Do You Know Kinjal? 🤔</h2>
+  <p class="section-sub reveal-child delay-1">Test your knowledge about the birthday star!</p>
+  <div class="quiz-container reveal-scale delay-2" id="quiz-container">
+    <div class="quiz-progress" id="quiz-progress">Question 1 of 5</div>
+    <div class="quiz-card" id="quiz-card">
+      <h3 class="quiz-question" id="quiz-question"></h3>
+      <div class="quiz-options" id="quiz-options"></div>
+    </div>
+    <div class="quiz-result hidden" id="quiz-result">
+      <div class="quiz-score" id="quiz-score"></div>
+      <p class="quiz-message" id="quiz-message"></p>
+      <button class="btn-primary" id="quiz-retry">Try Again</button>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('gallery-section')">
+      <span class="cta-icon">📷</span>
+      <span class="cta-text">See our favorite moments</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="gallery-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(135,210,190,0.25)" d="M0,30 C240,10 480,50 720,30 C960,10 1200,50 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ GALLERY (Enhanced) ============ -->
+<section class="parallax-section section-hidden" id="gallery-section" data-reveal="gallery-section">
+  <h2 class="gallery-title reveal-child">A Few of Our Favorite Moments</h2>
+  <p class="gallery-sub reveal-child delay-1">Photo spots are ready — swap these in whenever you like 📷</p>
+  <div class="gallery reveal-child delay-2" id="gallery">
+    <div class="polaroid" data-index="0"><div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg><span>add a photo</span></div><div class="caption">memory one</div></div>
+    <div class="polaroid" data-index="1"><div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg><span>add a photo</span></div><div class="caption">memory two</div></div>
+    <div class="polaroid" data-index="2"><div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg><span>add a photo</span></div><div class="caption">memory three</div></div>
+    <div class="polaroid" data-index="3"><div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg><span>add a photo</span></div><div class="caption">memory four</div></div>
+    <div class="polaroid" data-index="4"><div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg><span>add a photo</span></div><div class="caption">memory five</div></div>
+    <div class="polaroid" data-index="5"><div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg><span>add a photo</span></div><div class="caption">memory six</div></div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('wishes-section')">
+      <span class="cta-icon">🎀</span>
+      <span class="cta-text">Send a birthday wish</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox hidden" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">&times;</button>
+  <div class="lightbox-content" id="lightbox-content"></div>
+  <button class="lightbox-prev" id="lightbox-prev">&#8249;</button>
+  <button class="lightbox-next" id="lightbox-next">&#8250;</button>
+</div>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="wishes-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(255,218,179,0.25)" d="M0,30 C360,45 720,15 1080,30 C1260,38 1380,22 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ WISHES WALL ============ -->
+<section class="parallax-section section-hidden" id="wishes-section" data-reveal="wishes-section">
+  <h2 class="section-title reveal-child">Birthday Wishes Wall 🎀</h2>
+  <p class="section-sub reveal-child delay-1">Leave a wish for Kinjal — click a card to celebrate!</p>
+  <div class="wish-form reveal-child delay-2">
+    <input type="text" id="wish-name" placeholder="Your name" maxlength="30">
+    <textarea id="wish-message" placeholder="Write your birthday wish..." maxlength="200" rows="2"></textarea>
+    <button class="btn-primary" id="wish-submit">Send Wish 💌</button>
+  </div>
+  <div class="wishes-grid" id="wishes-grid"></div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('gift-section')">
+      <span class="cta-icon">🎁</span>
+      <span class="cta-text">Unwrap your gift</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="gift-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(243,184,196,0.2)" d="M0,30 C480,10 960,50 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ GIFT REVEAL ============ -->
+<section class="parallax-section section-hidden" id="gift-section" data-reveal="gift-section">
+  <h2 class="section-title reveal-child">A Gift For You 🎁</h2>
+  <p class="section-sub reveal-child delay-1">Click the box to unwrap your surprise!</p>
+  <div class="gift-box reveal-scale delay-2" id="gift-box">
+    <div class="gift-lid" id="gift-lid">
+      <div class="gift-bow"></div>
+    </div>
+    <div class="gift-body"></div>
+    <div class="gift-surprise hidden" id="gift-surprise">
+      <div class="gift-message">
+        <h3>🎉 Surprise! 🎉</h3>
+        <p>You are loved more than words can say. May all your dreams come true this year!</p>
+        <div class="gift-sparkles">✨ 🌟 ⭐ ✨ 🌟 ⭐</div>
+      </div>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('playlist-section')">
+      <span class="cta-icon">🎶</span>
+      <span class="cta-text">Listen to birthday vibes</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="playlist-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(222,208,245,0.2)" d="M0,30 C360,20 720,40 1080,30 C1260,25 1380,35 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ PLAYLIST ============ -->
+<section class="parallax-section section-hidden" id="playlist-section" data-reveal="playlist-section">
+  <h2 class="section-title reveal-child">Birthday Vibes Playlist 🎶</h2>
+  <p class="section-sub reveal-child delay-1">Songs to make your day extra special</p>
+  <div class="playlist-container reveal-child delay-2">
+    <div class="playlist-item" data-song="happy-birthday">
+      <div class="playlist-icon">🎵</div>
+      <div class="playlist-info">
+        <div class="playlist-name">Happy Birthday</div>
+        <div class="playlist-artist">Stevie Wonder</div>
+      </div>
+      <button class="playlist-play" data-index="0">▶️</button>
+    </div>
+    <div class="playlist-item" data-song="birthday">
+      <div class="playlist-icon">🎵</div>
+      <div class="playlist-info">
+        <div class="playlist-name">Birthday</div>
+        <div class="playlist-artist">The Beatles</div>
+      </div>
+      <button class="playlist-play" data-index="1">▶️</button>
+    </div>
+    <div class="playlist-item" data-song="celebrate">
+      <div class="playlist-icon">🎵</div>
+      <div class="playlist-info">
+        <div class="playlist-name">Celebration</div>
+        <div class="playlist-artist">Kool & The Gang</div>
+      </div>
+      <button class="playlist-play" data-index="2">▶️</button>
+    </div>
+    <div class="playlist-item" data-song="dont-stop">
+      <div class="playlist-icon">🎵</div>
+      <div class="playlist-info">
+        <div class="playlist-name">Don't Stop Me Now</div>
+        <div class="playlist-artist">Queen</div>
+      </div>
+      <button class="playlist-play" data-index="3">▶️</button>
+    </div>
+    <div class="playlist-item" data-song="good-as-hell">
+      <div class="playlist-icon">🎵</div>
+      <div class="playlist-info">
+        <div class="playlist-name">Good As Hell</div>
+        <div class="playlist-artist">Lizzo</div>
+      </div>
+      <button class="playlist-play" data-index="4">▶️</button>
+    </div>
+  </div>
+  <div class="now-playing hidden" id="now-playing">
+    <div class="now-playing-info">
+      <span class="now-playing-label">Now Playing:</span>
+      <span class="now-playing-song" id="now-playing-song"></span>
+    </div>
+    <div class="equalizer" id="equalizer">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('wheel-section')">
+      <span class="cta-icon">🎡</span>
+      <span class="cta-text">Spin for a surprise</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="wheel-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(245,197,99,0.15)" d="M0,30 C360,45 720,15 1080,30 C1260,38 1380,22 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ SPIN THE WHEEL ============ -->
+<section class="parallax-section section-hidden" id="wheel-section" data-reveal="wheel-section">
+  <h2 class="section-title reveal-child">Spin the Birthday Wheel 🎡</h2>
+  <p class="section-sub reveal-child delay-1">Spin to receive a special birthday wish!</p>
+  <div class="wheel-container reveal-scale delay-2">
+    <div class="wheel-outer">
+      <div class="wheel-pointer"></div>
+      <canvas id="spin-wheel" width="320" height="320"></canvas>
+    </div>
+    <button class="btn-primary" id="spin-btn">SPIN! 🎲</button>
+    <div class="wheel-result hidden" id="wheel-result"></div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('scratch-section')">
+      <span class="cta-icon">🎴</span>
+      <span class="cta-text">Scratch your luck</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="scratch-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(255,224,233,0.3)" d="M0,30 C480,55 960,5 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ SCRATCH CARD ============ -->
+<section class="parallax-section section-hidden" id="scratch-section" data-reveal="scratch-section">
+  <h2 class="section-title reveal-child">Scratch Your Surprise! 🎴</h2>
+  <p class="section-sub reveal-child delay-1">Scratch the card to reveal your hidden message</p>
+  <div class="scratch-container reveal-scale delay-2">
+    <div class="scratch-card" id="scratch-card">
+      <canvas id="scratch-canvas" width="360" height="220"></canvas>
+      <div class="scratch-message" id="scratch-message">
+        <div class="scratch-emoji">🎂</div>
+        <div class="scratch-text">You are amazing, Kinjal!</div>
+        <div class="scratch-sub">Wishing you the happiest birthday ever!</div>
+      </div>
+    </div>
+    <div class="scratch-progress">Scratch at least 50% to reveal! <span id="scratch-pct">0%</span></div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('memory-section')">
+      <span class="cta-icon">🧠</span>
+      <span class="cta-text">Test your memory</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="memory-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(222,208,245,0.3)" d="M0,30 C360,0 720,60 1080,30 C1260,15 1380,25 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ MEMORY MATCHING GAME ============ -->
+<section class="parallax-section section-hidden" id="memory-section" data-reveal="memory-section">
+  <h2 class="section-title reveal-child">Memory Match Game 🧠</h2>
+  <p class="section-sub reveal-child delay-1">Match the pairs to win! Test your memory</p>
+  <div class="memory-stats reveal-child delay-2">
+    <span>Moves: <strong id="memory-moves">0</strong></span>
+    <span>Pairs: <strong id="memory-pairs">0</strong>/6</span>
+  </div>
+  <div class="memory-grid" id="memory-grid"></div>
+  <button class="btn-primary" id="memory-reset">New Game 🔄</button>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('draw-section')">
+      <span class="cta-icon">🎨</span>
+      <span class="cta-text">Decorate a cake</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="draw-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(195,235,222,0.3)" d="M0,30 C240,55 480,5 720,30 C960,55 1200,5 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ DRAW A CAKE ============ -->
+<section class="parallax-section section-hidden" id="draw-section" data-reveal="draw-section">
+  <h2 class="section-title reveal-child">Decorate a Cake for Kinjal 🎨</h2>
+  <p class="section-sub reveal-child delay-1">Use your artistic skills to create a virtual cake!</p>
+  <div class="draw-container reveal-scale delay-2">
+    <div class="draw-tools">
+      <button class="draw-color active" data-color="#FF8FAB" style="background:#FF8FAB"></button>
+      <button class="draw-color" data-color="#C9A0ED" style="background:#C9A0ED"></button>
+      <button class="draw-color" data-color="#7EDEAA" style="background:#7EDEAA"></button>
+      <button class="draw-color" data-color="#FFD166" style="background:#FFD166"></button>
+      <button class="draw-color" data-color="#FFD4B8" style="background:#FFD4B8"></button>
+      <button class="draw-color" data-color="#E85D8A" style="background:#E85D8A"></button>
+      <button class="draw-color" data-color="#9B6DD7" style="background:#9B6DD7"></button>
+      <button class="draw-color" data-color="#4A2D5E" style="background:#4A2D5E"></button>
+      <div class="draw-size-wrap">
+        <label>Size:</label>
+        <input type="range" id="draw-size" min="2" max="20" value="6">
+      </div>
+      <button class="btn-primary draw-clear" id="draw-clear">Clear 🗑️</button>
+    </div>
+    <canvas id="draw-canvas" width="400" height="400"></canvas>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('voice-section')">
+      <span class="cta-icon">🎤</span>
+      <span class="cta-text">Record a birthday wish</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="voice-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(245,197,99,0.2)" d="M0,30 C360,5 720,55 1080,30 C1260,18 1380,38 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ VOICE MESSAGES ============ -->
+<section class="parallax-section section-hidden" id="voice-section" data-reveal="voice-section">
+  <h2 class="section-title reveal-child">Record a Birthday Wish 🎤</h2>
+  <p class="section-sub reveal-child delay-1">Record your voice and leave a special message for Kinjal</p>
+  <div class="voice-container reveal-scale delay-2">
+    <div class="voice-controls">
+      <button class="voice-btn" id="voice-record">
+        <span class="voice-icon">⏺️</span>
+        <span class="voice-label">Record</span>
+      </button>
+      <button class="voice-btn" id="voice-stop" disabled>
+        <span class="voice-icon">⏹️</span>
+        <span class="voice-label">Stop</span>
+      </button>
+      <button class="voice-btn" id="voice-play" disabled>
+        <span class="voice-icon">▶️</span>
+        <span class="voice-label">Play</span>
+      </button>
+    </div>
+    <div class="voice-status" id="voice-status">Click record to start</div>
+    <div class="voice-timer" id="voice-timer">0:00</div>
+    <div class="voice-recordings" id="voice-recordings"></div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('trivia-section')">
+      <span class="cta-icon">📊</span>
+      <span class="cta-text">Discover birthday facts</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="trivia-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(243,184,196,0.2)" d="M0,30 C480,10 960,50 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ BIRTHDAY TRIVIA ============ -->
+<section class="parallax-section section-hidden" id="trivia-section" data-reveal="trivia-section">
+  <h2 class="section-title reveal-child">Birthday Trivia Facts 📊</h2>
+  <p class="section-sub reveal-child delay-1">Fun facts about being born on August 19</p>
+  <div class="trivia-grid reveal-child delay-2" id="trivia-grid">
+    <div class="trivia-card tilt-card">
+      <div class="trivia-icon">♌</div>
+      <h3>Zodiac Sign</h3>
+      <p>Leo! Natural leaders with big hearts and warm personalities.</p>
+    </div>
+    <div class="trivia-card tilt-card">
+      <div class="trivia-icon">🌸</div>
+      <h3>Birth Flower</h3>
+      <p>Gladiolus & Poppy. Symbolizing strength, moral integrity, and remembrance.</p>
+    </div>
+    <div class="trivia-card tilt-card">
+      <div class="trivia-icon">💎</div>
+      <h3>Birthstone</h3>
+      <p>Peridot! A gem of light and protection, believed to bring good luck.</p>
+    </div>
+    <div class="trivia-card tilt-card">
+      <div class="trivia-icon">🎂</div>
+      <h3>Shared Birthday</h3>
+      <p>Celebrities like Matthew Perry and Bill Clinton also celebrate on Aug 19!</p>
+    </div>
+    <div class="trivia-card tilt-card">
+      <div class="trivia-icon">🌙</div>
+      <h3>Moon Phase</h3>
+      <p>The moon on your birthday determines your "birthday moon energy" for the year.</p>
+    </div>
+    <div class="trivia-card tilt-card">
+      <div class="trivia-icon">🍀</div>
+      <h3>Lucky Number</h3>
+      <p>Your lucky numbers are 1, 3, 10, 19 — they bring good fortune!</p>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('horoscope-section')">
+      <span class="cta-icon">🔮</span>
+      <span class="cta-text">Read your horoscope</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="horoscope-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(175,132,230,0.2)" d="M0,30 C360,50 720,10 1080,30 C1260,40 1380,20 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ BIRTHDAY HOROSCOPE ============ -->
+<section class="parallax-section section-hidden" id="horoscope-section" data-reveal="horoscope-section">
+  <h2 class="section-title reveal-child">Your Birthday Horoscope 🔮</h2>
+  <p class="section-sub reveal-child delay-1">What the stars have in store for Kinjal this year</p>
+  <div class="horoscope-card reveal-scale delay-2">
+    <div class="horoscope-zodiac">♌ Leo</div>
+    <div class="horoscope-divider"></div>
+    <div class="horoscope-section">
+      <h3>💕 Love</h3>
+      <p>This year brings deep connections and heartfelt moments. Open your heart to new possibilities.</p>
+    </div>
+    <div class="horoscope-section">
+      <h3>💼 Career</h3>
+      <p>A creative opportunity will present itself by fall. Trust your instincts — they won't steer you wrong.</p>
+    </div>
+    <div class="horoscope-section">
+      <h3>🌟 Personal Growth</h3>
+      <p>Your confidence will soar this year. Embrace challenges as they'll lead to your greatest achievements.</p>
+    </div>
+    <div class="horoscope-section">
+      <h3>🔮 Lucky Months</h3>
+      <p>September and December will be especially magical for you. Keep your eyes open!</p>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('bingo-section')">
+      <span class="cta-icon">🎯</span>
+      <span class="cta-text">Play birthday bingo</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="bingo-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(135,210,190,0.25)" d="M0,30 C240,10 480,50 720,30 C960,10 1200,50 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ BIRTHDAY BINGO ============ -->
+<section class="parallax-section section-hidden" id="bingo-section" data-reveal="bingo-section">
+  <h2 class="section-title reveal-child">Birthday Bingo 🎯</h2>
+  <p class="section-sub reveal-child delay-1">Mark off activities as you celebrate!</p>
+  <div class="birthday-stats reveal-child delay-2">
+    <span>Completed: <strong id="bingo-count">0</strong>/9</span>
+  </div>
+  <div class="bingo-grid" id="bingo-grid"></div>
+  <div class="bingo-message hidden" id="bingo-message">🎉 BINGO! You've celebrated to the fullest! 🎉</div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('balloon-section')">
+      <span class="cta-icon">🎈</span>
+      <span class="cta-text">Release a wish balloon</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="balloon-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(255,218,179,0.25)" d="M0,30 C360,45 720,15 1080,30 C1260,38 1380,22 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ WISH BALLOON RELEASE ============ -->
+<section class="parallax-section section-hidden" id="balloon-section" data-reveal="balloon-section">
+  <h2 class="section-title reveal-child">Release a Wish Balloon 🎈</h2>
+  <p class="section-sub reveal-child delay-1">Type your wish and watch it float to the sky!</p>
+  <div class="balloon-form reveal-child delay-2">
+    <input type="text" id="balloon-wish-input" placeholder="Type your birthday wish..." maxlength="60">
+    <button class="btn-primary" id="balloon-release-btn">Release 🎈</button>
+  </div>
+  <div class="balloon-sky" id="balloon-sky"></div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('guestbook-section')">
+      <span class="cta-icon">📖</span>
+      <span class="cta-text">Sign the guestbook</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="guestbook-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(243,184,196,0.2)" d="M0,30 C480,10 960,50 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ GUESTBOOK ============ -->
+<section class="parallax-section section-hidden" id="guestbook-section" data-reveal="guestbook-section">
+  <h2 class="section-title reveal-child">Birthday Guestbook 📖</h2>
+  <p class="section-sub reveal-child delay-1">Leave a message for Kinjal to treasure forever</p>
+  <div class="guestbook-form reveal-child delay-2">
+    <input type="text" id="guestbook-name" placeholder="Your name" maxlength="30">
+    <textarea id="guestbook-message" placeholder="Write your message..." maxlength="200" rows="3"></textarea>
+    <button class="btn-primary" id="guestbook-submit">Sign Guestbook ✍️</button>
+  </div>
+  <div class="guestbook-entries" id="guestbook-entries"></div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('capsule-section')">
+      <span class="cta-icon">⏳</span>
+      <span class="cta-text">Seal a time capsule</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="capsule-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(222,208,245,0.2)" d="M0,30 C360,20 720,40 1080,30 C1260,25 1380,35 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ TIME CAPSULE ============ -->
+<section class="parallax-section section-hidden" id="capsule-section" data-reveal="capsule-section">
+  <h2 class="section-title reveal-child">Time Capsule ⏳</h2>
+  <p class="section-sub reveal-child delay-1">Write a message that will be locked until next birthday!</p>
+  <div class="capsule-container reveal-scale delay-2">
+    <div class="capsule-form" id="capsule-form">
+      <textarea id="capsule-message" placeholder="Write something to future Kinjal..." maxlength="300" rows="4"></textarea>
+      <button class="btn-primary" id="capsule-lock">Lock Until Next Birthday 🔒</button>
+    </div>
+    <div class="capsule-locked hidden" id="capsule-locked">
+      <div class="capsule-icon">🔐</div>
+      <p>Your message is locked! It will be revealed on Kinjal's next birthday.</p>
+      <div class="capsule-countdown" id="capsule-countdown"></div>
+    </div>
+    <div class="capsule-revealed hidden" id="capsule-revealed">
+      <div class="capsule-icon">📬</div>
+      <h3>Message from the past!</h3>
+      <div class="capsule-text" id="capsule-text"></div>
+      <div class="capsule-date" id="capsule-date"></div>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('karaoke-section')">
+      <span class="cta-icon">🎤</span>
+      <span class="cta-text">Sing karaoke</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider section-hidden" data-reveal="karaoke-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(195,235,222,0.2)" d="M0,30 C240,55 480,5 720,30 C960,55 1200,5 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ KARAOKE MODE ============ -->
+<section class="parallax-section section-hidden" id="karaoke-section" data-reveal="karaoke-section">
+  <h2 class="section-title reveal-child">Birthday Karaoke 🎤</h2>
+  <p class="section-sub reveal-child delay-1">Sing along to the birthday song!</p>
+  <div class="karaoke-container reveal-scale delay-2">
+    <div class="karaoke-lyrics" id="karaoke-lyrics">
+      <div class="karaoke-line active">Happy birthday to you</div>
+      <div class="karaoke-line">Happy birthday to you</div>
+      <div class="karaoke-line">Happy birthday dear Kinjal</div>
+      <div class="karaoke-line">Happy birthday to you! 🎉</div>
+    </div>
+    <div class="karaoke-controls">
+      <button class="btn-primary" id="karaoke-play">Start Singing 🎵</button>
+      <div class="karaoke-progress">
+        <div class="karaoke-progress-bar" id="karaoke-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-cta">
+    <button class="cta-btn" onclick="revealSection('reactions-section')">
+      <span class="cta-icon">💖</span>
+      <span class="cta-text">Send your reactions</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WAVE DIVIDER ============ -->
+<div class="wave-divider flip section-hidden" data-reveal="reactions-section">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="rgba(135,210,190,0.2)" d="M0,30 C360,50 720,10 1080,30 C1260,40 1380,20 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ============ REACTIONS SECTION ============ -->
+<section class="parallax-section section-hidden" id="reactions-section" data-reveal="reactions-section">
+  <h2 class="section-title reveal-child">Send Your Reactions 💖</h2>
+  <p class="section-sub reveal-child delay-1">Click to send love and celebrate Kinjal!</p>
+  <div class="reactions-container reveal-child delay-2">
+    <button class="reaction-btn" data-emoji="❤️" data-count="0">
+      <span class="reaction-emoji">❤️</span>
+      <span class="reaction-count">0</span>
+    </button>
+    <button class="reaction-btn" data-emoji="🎂" data-count="0">
+      <span class="reaction-emoji">🎂</span>
+      <span class="reaction-count">0</span>
+    </button>
+    <button class="reaction-btn" data-emoji="🎉" data-count="0">
+      <span class="reaction-emoji">🎉</span>
+      <span class="reaction-count">0</span>
+    </button>
+    <button class="reaction-btn" data-emoji="😍" data-count="0">
+      <span class="reaction-emoji">😍</span>
+      <span class="reaction-count">0</span>
+    </button>
+    <button class="reaction-btn" data-emoji="🌟" data-count="0">
+      <span class="reaction-emoji">🌟</span>
+      <span class="reaction-count">0</span>
+    </button>
+    <button class="reaction-btn" data-emoji="💕" data-count="0">
+      <span class="reaction-emoji">💕</span>
+      <span class="reaction-count">0</span>
+    </button>
+    <button class="reaction-btn" data-emoji="🥳" data-count="0">
+      <span class="reaction-emoji">🥳</span>
+      <span class="reaction-count">0</span>
+    </button>
+    <button class="reaction-btn" data-emoji="✨" data-count="0">
+      <span class="reaction-emoji">✨</span>
+      <span class="reaction-count">0</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ FLOATING HEARTS CONTAINER ============ -->
+<div class="floating-hearts" id="floating-hearts" aria-hidden="true"></div>
+
+<!-- ============ SNOW/CONFETTI ON SCROLL ============ -->
+<canvas id="scroll-particles-canvas"></canvas>
+
+<div class="floating-decor d1" aria-hidden="true">🌸</div>
+<div class="floating-decor d2" aria-hidden="true">🦋</div>
+<div class="floating-decor d3" aria-hidden="true">✨</div>
+<div class="floating-decor d4" aria-hidden="true">🌺</div>
+<div class="floating-decor d5" aria-hidden="true">💫</div>
+
+
+<footer>
+  <div class="big">Happy Birthday, Kinjal 🎂</div>
+  <div>Made with love</div>
+</footer>
+
+<script src="react.js"></script>
+</body>
+</html>
