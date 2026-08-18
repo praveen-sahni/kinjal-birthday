@@ -1183,6 +1183,14 @@ section{
 .polaroid:nth-child(5) .frame{ background: repeating-linear-gradient(135deg, var(--gold), var(--gold) 10px, #fbe3a8 10px, #fbe3a8 20px); }
 .polaroid:nth-child(6) .frame{ background: repeating-linear-gradient(135deg, var(--blush-dark), var(--blush-dark) 10px, #f6cdd6 10px, #f6cdd6 20px); }
 .polaroid .frame svg{ width: 30px; height: 30px; opacity: 0.6; }
+.polaroid img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  aspect-ratio: 1 / 1;
+}
 .polaroid .caption{
   text-align: center;
   padding-top: 10px;

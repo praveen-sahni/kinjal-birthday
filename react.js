@@ -503,9 +503,14 @@
   function showLightbox(index){
     currentSlide = index;
     const polaroid = polaroids[index];
+    const img = polaroid.querySelector('img');
     const frame = polaroid.querySelector('.frame');
-    const svg = frame.querySelector('svg').outerHTML;
-    lightboxContent.innerHTML = svg;
+    if(img){
+      lightboxContent.innerHTML = '<img src="' + img.src + '" alt="' + img.alt + '">';
+    } else if(frame){
+      const svg = frame.querySelector('svg');
+      if(svg) lightboxContent.innerHTML = svg.outerHTML;
+    }
     lightbox.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   }
