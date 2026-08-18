@@ -723,16 +723,14 @@
     { text: "Best wishes! 🎁", color: "#C9A0ED" },
     { text: "Joy & peace! 🕊️", color: "#7EDEAA" }
   ];
+  const segAngle = (Math.PI * 2) / wheelSegments.length;
   let wheelAngle = 0;
   let spinning = false;
-  let wheelWinner = 0;
 
   function drawWheel(){
     const cx = spinCanvas.width / 2;
     const cy = spinCanvas.height / 2;
     const r = Math.min(cx, cy) - 10;
-    const segAngle = (Math.PI * 2) / wheelSegments.length;
-    const offset = -Math.PI / 2;
 
     spinCtx.clearRect(0, 0, spinCanvas.width, spinCanvas.height);
     spinCtx.save();
@@ -740,7 +738,7 @@
     spinCtx.rotate(wheelAngle);
 
     wheelSegments.forEach((seg, i) => {
-      const startAngle = offset + i * segAngle;
+      const startAngle = i * segAngle;
       spinCtx.beginPath();
       spinCtx.moveTo(0, 0);
       spinCtx.arc(0, 0, r, startAngle, startAngle + segAngle);
@@ -761,10 +759,13 @@
     });
 
     spinCtx.restore();
-
-    var normalizedAngle = ((-wheelAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-    wheelWinner = Math.floor(normalizedAngle / segAngle + 0.5) % wheelSegments.length;
   }
+
+  function getSegmentAtPointer(){
+    var norm = ((-wheelAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+    return Math.floor(norm / segAngle) % wheelSegments.length;
+  }
+
   drawWheel();
 
   spinBtn.addEventListener('click', () => {
@@ -772,16 +773,20 @@
     spinning = true;
     wheelResult.classList.add('hidden');
     spinBtn.disabled = true;
-    const extraSpins = 5 + Math.random() * 5;
-    const targetAngle = wheelAngle + extraSpins * Math.PI * 2 + Math.random() * Math.PI * 2;
-    const duration = 4000;
-    const startTime = performance.now();
-    const startAngle = wheelAngle;
+
+    var winnerIndex = Math.floor(Math.random() * wheelSegments.length);
+    var pointerAngle = Math.PI * 1.5;
+    var targetSegCenter = winnerIndex * segAngle + segAngle / 2;
+    var fullSpins = (5 + Math.floor(Math.random() * 5)) * Math.PI * 2;
+    var targetAngle = fullSpins + (pointerAngle - targetSegCenter);
+    var duration = 4000;
+    var startTime = performance.now();
+    var startAngle = wheelAngle;
 
     function animateSpin(now){
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
+      var elapsed = now - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 4);
       wheelAngle = startAngle + (targetAngle - startAngle) * eased;
       drawWheel();
       if(progress < 1){
@@ -789,7 +794,7 @@
       } else {
         spinning = false;
         spinBtn.disabled = false;
-        wheelResult.textContent = wheelSegments[wheelWinner].text;
+        wheelResult.textContent = wheelSegments[winnerIndex].text;
         wheelResult.classList.remove('hidden');
         burstConfetti(spinCanvas.getBoundingClientRect().left + spinCanvas.width / 2, spinCanvas.getBoundingClientRect().top + spinCanvas.height / 2);
       }
