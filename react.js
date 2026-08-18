@@ -725,6 +725,7 @@
   ];
   let wheelAngle = 0;
   let spinning = false;
+  let wheelWinner = 0;
 
   function drawWheel(){
     const cx = spinCanvas.width / 2;
@@ -760,6 +761,9 @@
     });
 
     spinCtx.restore();
+
+    var normalizedAngle = ((-wheelAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+    wheelWinner = Math.floor(normalizedAngle / segAngle + 0.5) % wheelSegments.length;
   }
   drawWheel();
 
@@ -785,10 +789,7 @@
       } else {
         spinning = false;
         spinBtn.disabled = false;
-        const segAngle = (Math.PI * 2) / wheelSegments.length;
-        const negNorm = (((-wheelAngle) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-        const index = Math.round(negNorm / segAngle) % wheelSegments.length;
-        wheelResult.textContent = wheelSegments[index].text;
+        wheelResult.textContent = wheelSegments[wheelWinner].text;
         wheelResult.classList.remove('hidden');
         burstConfetti(spinCanvas.getBoundingClientRect().left + spinCanvas.width / 2, spinCanvas.getBoundingClientRect().top + spinCanvas.height / 2);
       }
