@@ -731,6 +731,7 @@
     const cy = spinCanvas.height / 2;
     const r = Math.min(cx, cy) - 10;
     const segAngle = (Math.PI * 2) / wheelSegments.length;
+    const offset = -Math.PI / 2;
 
     spinCtx.clearRect(0, 0, spinCanvas.width, spinCanvas.height);
     spinCtx.save();
@@ -738,7 +739,7 @@
     spinCtx.rotate(wheelAngle);
 
     wheelSegments.forEach((seg, i) => {
-      const startAngle = i * segAngle;
+      const startAngle = offset + i * segAngle;
       spinCtx.beginPath();
       spinCtx.moveTo(0, 0);
       spinCtx.arc(0, 0, r, startAngle, startAngle + segAngle);
@@ -784,9 +785,9 @@
       } else {
         spinning = false;
         spinBtn.disabled = false;
-        const normalizedAngle = wheelAngle % (Math.PI * 2);
         const segAngle = (Math.PI * 2) / wheelSegments.length;
-        const index = Math.floor(((Math.PI * 2 - normalizedAngle) % (Math.PI * 2)) / segAngle) % wheelSegments.length;
+        const negNorm = (((-wheelAngle) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+        const index = Math.round(negNorm / segAngle) % wheelSegments.length;
         wheelResult.textContent = wheelSegments[index].text;
         wheelResult.classList.remove('hidden');
         burstConfetti(spinCanvas.getBoundingClientRect().left + spinCanvas.width / 2, spinCanvas.getBoundingClientRect().top + spinCanvas.height / 2);
