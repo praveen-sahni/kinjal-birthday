@@ -68,6 +68,7 @@
   const countdownBox = document.getElementById('countdown');
   const arrivedMsg = document.getElementById('arrived-msg');
   let countdownReached = false;
+  let timer = null;
 
   function tick(){
     const now = new Date();
@@ -75,7 +76,7 @@
     if(diff <= 0){
       countdownBox.style.display = 'none';
       arrivedMsg.style.display = 'block';
-      clearInterval(timer);
+      if(timer) clearInterval(timer);
       if(!countdownReached){
         countdownReached = true;
         triggerFireworks();
@@ -92,7 +93,7 @@
     els.secs.textContent = String(s).padStart(2,'0');
   }
   tick();
-  const timer = setInterval(tick, 1000);
+  timer = setInterval(tick, 1000);
 
   /* ============ CONFETTI ============ */
   const canvas = document.getElementById('confetti-canvas');
@@ -374,17 +375,16 @@
 
   /* ============ PARALLAX SCROLL ============ */
   const parallaxSections = document.querySelectorAll('.parallax-section');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+  const parallaxObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       if(entry.isIntersecting){
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, index * 80);
+        entry.target.classList.add('visible');
+        parallaxObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
-  parallaxSections.forEach(section => observer.observe(section));
+  parallaxSections.forEach(section => parallaxObserver.observe(section));
 
   /* ============ LETTER REVEAL ============ */
   const envelope = document.getElementById('envelope');
@@ -761,11 +761,6 @@
     spinCtx.restore();
   }
 
-  function getSegmentAtPointer(){
-    var norm = ((-wheelAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-    return Math.floor(norm / segAngle) % wheelSegments.length;
-  }
-
   drawWheel();
 
   spinBtn.addEventListener('click', () => {
@@ -857,7 +852,7 @@
   scratchCanvas.addEventListener('mouseup', () => scratching = false);
   scratchCanvas.addEventListener('mouseleave', () => scratching = false);
   scratchCanvas.addEventListener('touchstart', (e) => { scratching = true; const r = scratchCanvas.getBoundingClientRect(); scratch(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top); e.preventDefault(); });
-  scratchCanvas.addEventListener('touchmove', (e) => { if(scratching){ const r = scratchCanvas.getBoundingClientRect(); scratch(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top); } e.preventDefault(); });
+  scratchCanvas.addEventListener('touchmove', (e) => { if(scratching){ const r = scratchCanvas.getBoundingClientRect(); scratch(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top); e.preventDefault(); } });
   scratchCanvas.addEventListener('touchend', () => scratching = false);
 
   /* ============ MEMORY MATCHING GAME ============ */
@@ -1066,7 +1061,7 @@
     if(recordedBlob){
       const url = URL.createObjectURL(recordedBlob);
       const audio = new Audio(url);
-      audio.play();
+      audio.play().catch(() => { voiceStatus.textContent = 'Could not play audio.'; });
       voiceStatus.textContent = 'Playing...';
       audio.onended = () => { voiceStatus.textContent = 'Playback finished.'; };
     }
@@ -1299,7 +1294,11 @@
       }
     }, 2000);
 
+    if(!audioCtx){
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
     if(audioCtx){
+      if(audioCtx.state === 'suspended') audioCtx.resume();
       const now = audioCtx.currentTime;
       karaokeMelody.forEach((freq, i) => {
         const osc = audioCtx.createOscillator();
@@ -1339,6 +1338,7 @@
         heart.className = 'floating-heart';
         heart.textContent = emoji;
         heart.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 40) + 'px';
+        heart.style.top = rect.top + 'px';
         heart.style.animationDuration = (3 + Math.random() * 2) + 's';
         document.getElementById('floating-hearts').appendChild(heart);
         setTimeout(() => heart.remove(), 5000);
@@ -1378,6 +1378,7 @@
   window.addEventListener('resize', resizeScrollCanvas);
 
   const sparkColors = ['#E85D8A', '#9B6DD7', '#4DC98A', '#FFD166', '#FFB088'];
+  let scrollAnimRunning = false;
   window.addEventListener('scroll', () => {
     const delta = Math.abs(window.scrollY - lastScrollY);
     if(delta > 10){
@@ -1394,11 +1395,20 @@
           maxLife: 60 + Math.random() * 40
         });
       }
+      if(!scrollAnimRunning){
+        scrollAnimRunning = true;
+        requestAnimationFrame(animateScrollParticles);
+      }
     }
     lastScrollY = window.scrollY;
   });
 
   function animateScrollParticles(){
+    if(scrollParticlesArr.length === 0){
+      scrollCtx.clearRect(0, 0, scrollCanvas.width, scrollCanvas.height);
+      scrollAnimRunning = false;
+      return;
+    }
     scrollCtx.clearRect(0, 0, scrollCanvas.width, scrollCanvas.height);
     scrollParticlesArr.forEach(p => {
       p.vy -= 0.02;
